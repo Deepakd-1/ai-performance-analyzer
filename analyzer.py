@@ -19,3 +19,13 @@ def predict_future(history, model):
     model.fit(X, y)
     future = model.predict([[len(history) + 5]])  # Predict 5 sec ahead
     return round(future[0], 2)
+
+def get_suggestions(cpu, ram):
+    suggestions = []
+    if cpu > 30:
+        suggestions.append("High CPU detected → Close heavy apps or background tasks")
+    if ram > 80:
+        suggestions.append("High RAM usage → Consider upgrading RAM or closing unused apps")
+    if not suggestions:
+        suggestions.append("System running normally")
+    return suggestions
