@@ -29,3 +29,15 @@ def get_suggestions(cpu, ram):
     if not suggestions:
         suggestions.append("System running normally")
     return suggestions
+
+print("Starting AI-powered OS Performance Analyzer...\n")
+
+while True:
+    cpu = psutil.cpu_percent()
+    ram = psutil.virtual_memory().percent
+    
+    cpu_history.append(cpu)
+    ram_history.append(ram)
+
+    cpu_forecast = predict_future(cpu_history, model_cpu)
+    ram_forecast = predict_future(ram_history, model_ram)
