@@ -49,7 +49,7 @@ while True:
                         key=lambda p: p.info['cpu_percent'],
                         reverse=True)[:5]
 
-    print("\nTop Area:")
+    print("\nTop Perfomance:")
     for p in high_procs:
         print(f"PID {p.info['pid']} | {p.info['name']} | CPU {p.info['cpu_percent']}% | RAM {p.info['memory_percent']:.2f}%")
 
