@@ -49,6 +49,19 @@ while True:
                         key=lambda p: p.info['cpu_percent'],
                         reverse=True)[:5]
 
-    print("\nTop processes:")
+    print("\nTop Area:")
     for p in high_procs:
         print(f"PID {p.info['pid']} | {p.info['name']} | CPU {p.info['cpu_percent']}% | RAM {p.info['memory_percent']:.2f}%")
+
+
+    print("\nSuggestions:")
+    for s in get_suggestions(cpu, ram):
+        print("- " + s)
+
+    if cpu_forecast:
+        print(f"\nAI Prediction: CPU in 5 sec → {cpu_forecast}%")
+    if ram_forecast:
+        print(f"AI Prediction: RAM in 5 sec → {ram_forecast}%")
+
+    print("\n--------------------------------------\n")
+    time.sleep(3)
