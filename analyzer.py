@@ -41,3 +41,14 @@ while True:
 
     cpu_forecast = predict_future(cpu_history, model_cpu)
     ram_forecast = predict_future(ram_history, model_ram)
+
+
+    print(f"CPU Usage: {cpu}% | RAM Usage: {ram}%")
+    
+    high_procs = sorted(psutil.process_iter(['pid', 'name', 'cpu_percent', 'memory_percent']),
+                        key=lambda p: p.info['cpu_percent'],
+                        reverse=True)[:5]
+
+    print("\nTop processes:")
+    for p in high_procs:
+        print(f"PID {p.info['pid']} | {p.info['name']} | CPU {p.info['cpu_percent']}% | RAM {p.info['memory_percent']:.2f}%")
