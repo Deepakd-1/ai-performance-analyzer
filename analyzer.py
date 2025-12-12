@@ -22,7 +22,7 @@ def predict_future(history, model):
 
 def get_suggestions(cpu, ram):
     suggestions = []
-    if cpu > 30:
+    if cpu > 70:
         suggestions.append("High CPU detected → Close heavy apps or background tasks")
     if ram > 80:
         suggestions.append("High RAM usage → Consider upgrading RAM or closing unused apps")
